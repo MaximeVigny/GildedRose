@@ -5,11 +5,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class GildedRoseTest {
 
-	GildedRose inn = new GildedRose();
-	List<CorruptedItems> items = inn.getItem();
 
 	@Test
 	public void Sulfuras_should_keep_quality() {
+
+		GildedRose inn = new GildedRose();
 
 		CorruptedItems sulfuras = inn.get("Sulfuras, Hand of Ragnaros");
 		int originQuality = sulfuras.getItem().quality;
@@ -23,6 +23,9 @@ public class GildedRoseTest {
 	@Test
 	public void Quality_should_never_be_negative() {
 
+		GildedRose inn = new GildedRose();
+		List<CorruptedItems> items = inn.getItem();
+
 		for(int i=0; i < 100; i++)
 		{
 			inn.updateQuality();
@@ -35,6 +38,9 @@ public class GildedRoseTest {
 
 	@Test
 	public void Quality_should_never_be_more_than_50(){
+
+		GildedRose inn = new GildedRose();
+		List<CorruptedItems> items = inn.getItem();
 
 		for(int i=0; i < 100; i++)
 		{
@@ -53,6 +59,7 @@ public class GildedRoseTest {
 	@Test
 	public void Aged_Brie_should_increase_in_quality_the_older_it_gets(){
 
+		GildedRose inn = new GildedRose();
 		CorruptedItems brie = inn.get("Aged Brie");
 		int quality = brie.getItem().quality;
 
@@ -67,6 +74,9 @@ public class GildedRoseTest {
 
 	@Test
 	public void Sulfuras_cant_be_sold(){
+
+		GildedRose inn = new GildedRose();
+		List<CorruptedItems> items = inn.getItem();
 
 		for(int i =0; i < 100; i++)
 		{
@@ -84,6 +94,9 @@ public class GildedRoseTest {
 	@Test
 	public void Quality_degrades_twice_as_fast_when_the_sell_by_date_has_passed(){
 
+		GildedRose inn = new GildedRose();
+		List<CorruptedItems> items = inn.getItem();
+
 		for(int i =0; i < 100; i++)
 		{
 			inn.updateQuality();
@@ -92,7 +105,6 @@ public class GildedRoseTest {
 			{
 				if(it.getItem().getSellIn() == 0){
 					// assertThat(it.getItem().quality).isEqualTo();
-					// En cours ...
 				}
 			}
 		}
